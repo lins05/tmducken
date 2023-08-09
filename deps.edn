@@ -1,10 +1,10 @@
 {:paths ["src"]
- :deps {techascent/tech.ml.dataset {:mvn/version "6.046"}
+ :deps {techascent/tech.ml.dataset {:mvn/version "6.104"}
         techascent/tech.ml.dataset.sql {:mvn/version "6.046-01"}
-        net.java.dev.jna/jna {:mvn/version "5.9.0"}}
+        net.java.dev.jna/jna {:mvn/version "5.13.0"}}
  :aliases
  {:depstar
-  {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.0.193"}}
+  {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.1.303"}}
    :ns-default hf.depstar
    :exec-fn hf.depstar/jar
    :exec-args {:group-id "com.cnuernber"
@@ -15,20 +15,20 @@
   :test
   {:extra-deps {com.cognitect/test-runner
                 {:git/url "https://github.com/cognitect-labs/test-runner"
-                 :sha "209b64504cb3bd3b99ecfec7937b358a879f55c1"}
-                ch.qos.logback/logback-classic {:mvn/version "1.1.3"}}
+                 :sha "7284cda41fb9edc0f3bc6b6185cfb7138fc8a023"}
+                ch.qos.logback/logback-classic {:mvn/version "1.4.10"}}
    :extra-paths ["test"]
    :main-opts ["-m" "cognitect.test-runner"]}
   ;;deploy to clojars
   :deploy
-  {:replace-deps {slipset/deps-deploy {:mvn/version "0.1.5"}}
+  {:replace-deps {slipset/deps-deploy {:mvn/version "0.2.1"}}
    :exec-fn deps-deploy.deps-deploy/deploy
    :exec-args {:installer :remote
                :sign-releases? true
                :artifact "target/tmducken.jar"}}
 
   :install
-  {:replace-deps {slipset/deps-deploy {:mvn/version "0.1.5"}}
+  {:replace-deps {slipset/deps-deploy {:mvn/version "0.2.1"}}
    :exec-fn deps-deploy.deps-deploy/deploy
    :exec-args {:installer :local
                :artifact "target/tmducken.jar"}}
@@ -37,8 +37,8 @@
   ;;clj -X:codox
   :codox
   {:extra-deps {codox-theme-rdash/codox-theme-rdash {:mvn/version "0.1.2"}
-                com.cnuernber/codox {:mvn/version "1.000"}
-                cider/cider-nrepl {:mvn/version "0.26.0"}}
+                com.cnuernber/codox {:mvn/version "1.001"}
+                cider/cider-nrepl {:mvn/version "0.35.0"}}
    :exec-fn codox.main/-main
    :exec-args {:arg-paths [[:aliases :depstar :exec-args]]
                :description "DuckDB bindings to dtype-next and tech.ml.dataset"
